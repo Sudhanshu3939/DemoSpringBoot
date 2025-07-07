@@ -32,4 +32,9 @@ public class ProductController {
     public ResponseEntity<List<Product>> searchProduct(@RequestParam(name = "keyword") String keyword){
         return new ResponseEntity<>(productService.searchProduct(keyword), HttpStatus.OK);
     }
+
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable(name = "id") int id){
+        return productService.deleteProduct(id);
+    }
 }
