@@ -11,15 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/")
-    public String greet(){
-        return "Hello World";
-    }
 
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts(){
@@ -29,5 +26,10 @@ public class ProductController {
     @PostMapping("/product")
     public ResponseEntity<Product> addProduct(@RequestBody Product product){
         return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
+    }
+
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Product>> searchProduct(@RequestParam(name = "keyword") String keyword){
+        return new ResponseEntity<>(productService.searchProduct(keyword), HttpStatus.OK);
     }
 }
