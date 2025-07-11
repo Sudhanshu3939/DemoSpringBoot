@@ -21,7 +21,7 @@ public class Product {
     private String name;
     private String description;
     private String brand;
-    private float price;
+    private double price;
     private String category;
     private Date releaseDate;
     private boolean availability;
